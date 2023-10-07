@@ -3,18 +3,18 @@ import { Outlet } from 'react-router-dom';
 import { Container, Header, Logo, Link } from './SharedLayout.styled';
 
 const SharedLayout = () => {
-  <Container>
+  return (   <Container>
     <Header>
       <Logo>
         {' '}
         <span role="img" aria-label="heart icon">
-          💗
+          🎞️
         </span>
       </Logo>
 
       <nav>
         <Link to="/" end>Home</Link>
-        <Link to="/Movies">Movies</Link>
+        <Link to="/movies">Movies</Link>
       </nav>
     </Header>
 
@@ -22,7 +22,10 @@ const SharedLayout = () => {
       {' '}
       <Outlet />
     </Suspense>
-  </Container>;
+  </Container>
+  
+  )
+  
 };
 
 

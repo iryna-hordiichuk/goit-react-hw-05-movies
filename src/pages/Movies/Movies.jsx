@@ -1,22 +1,43 @@
-import React, { useEffect } from 'react';
-import getTrendingMovies from '../../MoviesAPI';
+import { useEffect, useState } from 'react';
+import { useSearchParams, useLocation } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import SearchForm from 'components/SearchForm';
+import MoviesList from 'components/MoviesList';
 
-function App() {
+import { getMovieByQuery } from 'MoviesAPI';
+
+const Movies = () => {
+  const [queryMovies, setQueryMovies] = useState([]);
+  const [error, setError] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') ?? '';
+  const location = useLocation();
+
+
   useEffect(() => {
-    getTrendingMovies(1)
-      .then(({ data: { results } }) => {
-        console.log(results);
-      })
-      .catch(error => {
-        console.error('Error fetching trending movies:', error);
-      });
-  }, []);
+    getMovieByQuery(query)
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+  }, [query]);
 
-  return (
-    <div>
-      <h1>Hello everyone !</h1>
-    </div>
-  );
-}
+  const onChange = value => {
+    setSearchParams(value !== '' ? { query: value } : {});
+  };
 
-export default App;
+return (
+<>
+<SearchForm onChange={onChange} value={query} />
+{/* <MoviesList movies={queryMovies} location={location}/> */}
+
+
+</>
+
+
+
+)
+
+
+
+};
+
+export default Movies;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import getTrendingMovies from 'MoviesAPI';
-import { trendingMapper } from 'mappers/trendingMapper';
+import { getTrendingMovies } from 'MoviesAPI';
+import { trendingMapper } from 'mappers';
 
 import MoviesList from 'components/MoviesList/MoviesList';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
