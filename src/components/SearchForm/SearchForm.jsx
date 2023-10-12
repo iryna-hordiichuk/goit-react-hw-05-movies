@@ -1,15 +1,11 @@
-import {Wrapper, Input, Icon} from "./SearchForm.styled";
+import { StyledForm, Input, StyledButton } from './SearchForm.styled';
 
-const SearchForm = ({ value, onChange }) => {
+const SearchForm = ({ onSubmit }) => {
   return (
-    <Wrapper>
-      <Icon />
-      <Input
-        type="text"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-      />
-    </Wrapper>
+    <StyledForm onSubmit={onSubmit}>
+      <Input type="text" name="query" />
+      <StyledButton type="submit"> Search movies</StyledButton>
+    </StyledForm>
   );
 };
 

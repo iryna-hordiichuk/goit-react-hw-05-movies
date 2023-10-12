@@ -28,8 +28,8 @@ export const getMovieById = async movieId => {
   return { title, posterPath, releaseDate, genres, overview, voteAverage };
 };
 
-export const getMovieByQuery = query => {
-  return axios(`/search/movie`, {
+export const getMovieByQuery = async query => {
+  const response = await axios( "/search/movie", {
     params: {
       api_key: API_KEY,
       language: 'en-US',
@@ -38,4 +38,26 @@ export const getMovieByQuery = query => {
       include_adult: false,
     },
   });
+  return response.data.results;
+};
+
+export const getMovieReviews = async movieId => {
+  const { data } = await axios(`/movie/${movieId}/reviews`, {
+    params: {
+      api_key: API_KEY,
+      language: 'en-US',
+      page: 1,
+    },
+  });
+  return data.rewiev;
+};
+
+export const getCastById = async movieId => {
+  const { data } = await axios(`/movie/${movieId}/credits`, {
+    params: {
+      api_key: API_KEY,
+      language: 'en-US',
+    },
+  });
+return data.cast;
 };

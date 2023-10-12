@@ -11,20 +11,21 @@ padding: 0 16;
 export const Header = styled.header`
 display: flex;
 align-items: center;
-justify-content: center;
-gap: 12px;
+justify-content: left;
+gap: 24px;
 padding: 8px 0;
 margin-bottom: ${props => props.theme.space[5]}px;
 border-bottom: 1px solid ${props => props.theme.primaryText};
 
 > nav {
     display: flex;
+    gap: 16px;
 }
 `;
 
 export const Logo = styled.p`
 font-weight: ${props => props.theme.fontWeights.bold};
-margin: 0;
+margin-left: 32px;
 
 `;
 

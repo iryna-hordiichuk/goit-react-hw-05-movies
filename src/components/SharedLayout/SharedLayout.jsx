@@ -3,30 +3,30 @@ import { Outlet } from 'react-router-dom';
 import { Container, Header, Logo, Link } from './SharedLayout.styled';
 
 const SharedLayout = () => {
-  return (   <Container>
-    <Header>
-      <Logo>
+  return (
+    <Container>
+      <Header>
+        <Logo>
+          {' '}
+          <span role="img" aria-label="heart icon">
+            🎞️
+          </span>
+        </Logo>
+
+        <nav>
+          <Link to="/" end>
+            Home
+          </Link>
+          <Link to="/movies">Movies</Link>
+        </nav>
+      </Header>
+
+      <Suspense fallback={<div>Loading page ... </div>}>
         {' '}
-        <span role="img" aria-label="heart icon">
-          🎞️
-        </span>
-      </Logo>
-
-      <nav>
-        <Link to="/" end>Home</Link>
-        <Link to="/movies">Movies</Link>
-      </nav>
-    </Header>
-
-    <Suspense fallback={<div>Loading page ... </div>}>
-      {' '}
-      <Outlet />
-    </Suspense>
-  </Container>
-  
-  )
-  
+        <Outlet />
+      </Suspense>
+    </Container>
+  );
 };
-
 
 export default SharedLayout;

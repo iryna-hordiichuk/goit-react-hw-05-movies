@@ -7,9 +7,18 @@ const BackLink = ({ to, children }) => {
       <StyledLink to={to}>
         <HiArrowLeft size="24" />
         {children}
-        {/* children is text 'Back to ?? ...' */}
       </StyledLink>
     );
   };
   
   export default BackLink;
+
+  // 💕the children prop is a special prop that 
+  // allows you to pass elements or content between 
+  // the opening and closing tags
+
+  // ✨in his component children prop is expected to receive text content, 
+  // specifically the text you want to display as a link label.
+  // Using children props allows you to customize the link text as needed
+  //  for different use cases.
+
