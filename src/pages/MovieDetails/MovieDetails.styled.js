@@ -16,19 +16,12 @@ export const MovieTitle = styled.h1`
   margin-bottom: ${p => p.theme.space[5]}px;
 `;
 
-// export const InfoList = styled.ul`
-//   display: flex;
-//   flex-direction: column;
-//   gap: ${p => p.theme.space[6]}px;
-// `;
-
 export const SecondaryTitle = styled.h2`
   color: ${p => p.theme.colors.primaryText};
   font-size: ${p => p.theme.fontSizes.m};
   font-weight: ${p => p.theme.fontWeights.bold};
   margin-bottom: ${p => p.theme.space[5]}px;
   
-
 `;
 
 export const Text = styled.p`
@@ -72,7 +65,7 @@ export const StyledNavLink = styled(NavLink)`
   font-size: ${p => p.theme.fontSizes.l};
 
   &.active {
-    background-color: ${p => p.theme.colors.hoverColor};
+    background-color: ${p => p.theme.colors.secondaryText};
     color: ${p => p.theme.colors.white};
   }
   :hover:not(.active),
@@ -81,3 +74,16 @@ export const StyledNavLink = styled(NavLink)`
     color: ${p => p.theme.colors.white};
   }
 `;
+
+// The &.active selector applies styles when the link is in 
+// an "active" state, typically *✨ when it matches the current route*. 
+// In this case, it sets a background color and changes the text 
+// color to make the link stand out.
+
+// The :hover:not(.active) selector applies styles when the link is 
+// hovered, but not in the "active" state. It also sets a background 
+// color and changes the text color to give visual feedback when the link is hovered.
+
+// The :focus-visible:not(.active) selector applies styles when the 
+// link is focused, but not in the "active" state. This is useful for 
+// accessibility, making sure that keyboard navigation is properly styled.

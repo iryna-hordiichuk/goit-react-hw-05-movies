@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {castMapper} from './mappers/castMapper';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 const API_KEY = '8770560c7097e815657709cb3d71f99c';
@@ -57,7 +58,8 @@ export const getCastById = async movieId => {
     params: {
       api_key: API_KEY,
       language: 'en-US',
+      page: 1,
     },
   });
-return data.cast;
+return castMapper(data.cast);
 };

@@ -9,12 +9,18 @@ export const CastList = styled.ul`
 `;
 
 export const CastItem = styled.li`
-  flex-basis: calc((100% - 3 * 20px) / 4);
+  /* flex-basis: calc((100% - 3 * 20px) / 4); */
   border-radius: ${p => p.theme.radii.normal};
 `;
 
 export const CastImg = styled.img`
-  width: 100%;
-  height: 398px;
+  max-width: 100%;
+  max-height: 300px;
   object-fit: cover;
+`;
+
+export const StyledContainer = styled.div`
+display: flex;
+align-items: center;
+gap: 8px;
 `;
