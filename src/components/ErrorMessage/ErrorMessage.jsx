@@ -1,12 +1,9 @@
 import { ErrorMessageStyled } from './ErrorMessage.styled';
 
-const ErrorMessage = () => {
+const ErrorMessage = ({children}) => {
   return (
     <>
-      <ErrorMessageStyled>
-        {' '}
-        Ooops! Something went wrong, please reload the page 😉
-      </ErrorMessageStyled>
+      <ErrorMessageStyled>{children}</ErrorMessageStyled>
     </>
   );
 };

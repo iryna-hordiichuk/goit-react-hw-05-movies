@@ -35,22 +35,10 @@ export const getMovieByQuery = async query => {
       api_key: API_KEY,
       language: 'en-US',
       query: query,
-      page: 1,
       include_adult: false,
     },
   });
   return response.data.results;
-};
-
-export const getMovieReviews = async movieId => {
-  const { data } = await axios(`/movie/${movieId}/reviews`, {
-    params: {
-      api_key: API_KEY,
-      language: 'en-US',
-      page: 1,
-    },
-  });
-  return data.rewiev;
 };
 
 export const getCastById = async movieId => {
@@ -58,8 +46,20 @@ export const getCastById = async movieId => {
     params: {
       api_key: API_KEY,
       language: 'en-US',
-      page: 1,
+ 
     },
   });
 return castMapper(data.cast);
 };
+
+export const getMovieReviews = async movieId => {
+  const { data } = await axios(`/movie/${movieId}/reviews`, {
+    params: {
+      api_key: API_KEY,
+      language: 'en-US',
+ 
+    },
+  });
+  return data.results;
+};
+

@@ -20,7 +20,8 @@ export const CastImg = styled.img`
 `;
 
 export const StyledContainer = styled.div`
-display: flex;
-align-items: center;
-gap: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
 `;

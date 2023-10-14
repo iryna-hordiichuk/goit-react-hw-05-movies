@@ -4,7 +4,7 @@ import { getTrendingMovies } from 'MoviesAPI';
 import { trendingMapper } from 'mappers';
 
 import MoviesList from 'components/MoviesList/MoviesList';
-import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
+import ErrorMessage from 'components/ErrorMessage';
 import { Title } from './Home.styled';
 
 const Home = () => {
@@ -13,23 +13,27 @@ const Home = () => {
   const location = useLocation();
 
   useEffect(() => {
-    getTrendingMovies(1)
+    getTrendingMovies()
       .then(({ data: { results } }) => {
         const movies = trendingMapper(results);
 
         setTrendingMovies(movies);
       })
       .catch(error => {
-        setError(error.message);
+        setError(error);
       });
   }, []);
 
   return (
     <main>
       <Title>Trending movies</Title>
-      {error && <ErrorMessage />}
-      {trendingMovies?.length > 0 && (
+      {trendingMovies?.length > 0 && !error && (
         <MoviesList movies={trendingMovies} location={location} />
+      )}
+      {error && (
+        <ErrorMessage>
+          Something went wrong, please reload the page.
+        </ErrorMessage>
       )}
     </main>
   );

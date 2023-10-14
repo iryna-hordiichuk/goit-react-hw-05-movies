@@ -25,12 +25,12 @@ const Movies = () => {
         const movies = trendingMapper(results);
         setMovies(movies);
         if (movies.length === 0) {
-          toast.error('Sorry, no movies was found');
+          toast.error('Sorry, no movies were found');
         }
       })
 
       .catch(error => {
-        console.log(error.message);
+        console.log(error.status_message);
         setError(error);
 
       });
@@ -46,7 +46,7 @@ const Movies = () => {
   return (
     <>
       <SearchForm onSubmit={onSubmit} />
-      {error && <ErrorMessage/>}
+      {error && <ErrorMessage>Please reload the page.</ErrorMessage>}
       {movies.lenght !== 0 && (
         <MoviesList movies={movies} location={location} />
       )}

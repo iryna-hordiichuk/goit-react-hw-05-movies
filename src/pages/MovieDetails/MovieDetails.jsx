@@ -1,6 +1,6 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useLocation, useParams, Outlet } from 'react-router-dom';
-// import { BarLoader } from 'react-spinners';
+import BarLoader from 'react-spinners/BarLoader';
 
 import { getMovieById, posterBaseUrl } from 'MoviesAPI';
 import ErrorMessage from 'components/ErrorMessage';
@@ -32,8 +32,8 @@ const MovieDetails = () => {
         setError(null);
       })
       .catch(error => {
-        console.log(error.message);
-        setError(error.message);
+        console.log(error.status_message);
+        setError(error.status_message);
         setMovie(null);
       });
   }, [movieId]);
@@ -41,7 +41,7 @@ const MovieDetails = () => {
   return (
     <main>
       <BackLink to={backLinkHref}> Go back </BackLink>
-      {!movie && error && <ErrorMessage />}
+      {!movie && error && <ErrorMessage>Please reload the page.</ErrorMessage>}
       {movie && (
         <>
           <MainSection>
@@ -70,15 +70,32 @@ const MovieDetails = () => {
             <LinkList>
               <li>
                 {' '}
-                <StyledNavLink to="cast" state={{from: backLinkHref}}>Cast</StyledNavLink>
+                <StyledNavLink to="cast" state={{ from: backLinkHref }}>
+                  Cast
+                </StyledNavLink>
               </li>
               <li>
                 {' '}
-                <StyledNavLink to="reviews" state={{from: backLinkHref}}>Reviews</StyledNavLink>
+                <StyledNavLink to="reviews" state={{ from: backLinkHref }}>
+                  Reviews
+                </StyledNavLink>
               </li>
             </LinkList>
-            <Suspense>
-              <Outlet/>
+            <Suspense
+              fallback={
+                <BarLoader
+                  loading={true}
+                  color="#35495e"
+                  cssOverride={{
+                    display: 'block',
+                    margin: '0 auto',
+                  }}
+                  height={150}
+                  aria-label="Loading Spinner"
+                />
+              }
+            >
+              <Outlet />
             </Suspense>
           </AdditionalSection>
         </>
