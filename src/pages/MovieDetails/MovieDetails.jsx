@@ -90,7 +90,7 @@ const MovieDetails = () => {
                     display: 'block',
                     margin: '0 auto',
                   }}
-                  height={150}
+                  height={20}
                   aria-label="Loading Spinner"
                 />
               }
