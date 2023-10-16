@@ -17,23 +17,28 @@ const Reviews = () => {
 
   return (
     <>
-      {reviews.length > 0 &&
-        !error &&
-        reviews.map(({ id, author, content }) => (
-          <ReviewsList key={id}>
-            <ul>
-              {' '}
+      {reviews.length > 0 && !error && (
+        <ReviewsList>
+          {reviews.map(({ id, author, content }) => (
+            <li key={id}>
               <ReviewAuthor>Author: {author}</ReviewAuthor>
-              <ReviewText>{content}</ReviewText>{' '}
-            </ul>
-          </ReviewsList>
-        ))}
-      {reviews.length === 0 && !error && <p>There are no reviews for this movie</p>}
+              <ReviewText>{content}</ReviewText>
+            </li>
+          ))}
+        </ReviewsList>
+      )}
+      {reviews.length === 0 && !error && (
+        <p>There are no reviews for this movie</p>
+      )}
       {error && (
-        <ErrorMessage>Somethig went wrong, please reload the page.</ErrorMessage>
+        <ErrorMessage>
+          Somethig went wrong, please reload the page.
+        </ErrorMessage>
       )}
     </>
   );
 };
 
 export default Reviews;
+
+//! Question: do I need state isLoading here ?
